@@ -1,3 +1,4 @@
+const { getMfeFileName } = require("../../webpack-config/helper");
 const webpackMfeConfig = require("../../webpack-config/webpack.mfe.config");
 
 module.exports = () => {
@@ -7,6 +8,11 @@ module.exports = () => {
       mfeConfig: {
         name: "landing",
         appName: "landing",
+        remotes: {
+          "ui-components": `uiComponents@http://localhost:3010/${getMfeFileName(
+            "uiComponents"
+          )}`,
+        },
         exposes: {
           "./App": "./src/App.tsx",
         },

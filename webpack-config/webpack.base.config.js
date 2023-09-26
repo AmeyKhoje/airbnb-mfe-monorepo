@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = (port, mode = "development", open) => {
+module.exports = (port, mode = "development", open, skipHtmlPlugin = false) => {
   return {
     mode,
     entry: "./src/index.tsx",
@@ -13,15 +13,19 @@ module.exports = (port, mode = "development", open) => {
       publicPath: `http://localhost:${port}/`,
     },
     devServer: {
-      static: {
-        directory: path.resolve(__dirname, "./public"),
-      },
+      ...(skipHtmlPlugin
+        ? {}
+        : {
+            static: {
+              directory: path.resolve(__dirname, "./public"),
+            },
+            static: "./public",
+          }),
       port,
       hot: true,
       open: !!open,
       compress: true,
       historyApiFallback: true,
-      static: "./public",
     },
     module: {
       rules: [
@@ -65,12 +69,16 @@ module.exports = (port, mode = "development", open) => {
       },
     },
     plugins: [
-      new HtmlWebpackPlugin({
-        cache: true,
-        chunks: true,
-        filename: "index.html",
-        template: path.resolve("public/index.html"),
-      }),
+      ...(skipHtmlPlugin
+        ? []
+        : [
+            new HtmlWebpackPlugin({
+              cache: true,
+              chunks: true,
+              filename: "index.html",
+              template: path.resolve("public/index.html"),
+            }),
+          ]),
       // new webpack.ProvidePlugin({
       //   process: "process/browser",
       // }),
