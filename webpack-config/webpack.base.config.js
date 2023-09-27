@@ -3,10 +3,16 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = (port, mode = "development", open, skipHtmlPlugin = false) => {
+module.exports = (
+  port,
+  mode = "development",
+  open,
+  skipHtmlPlugin = false,
+  entryFileExtension = ".tsx"
+) => {
   return {
     mode,
-    entry: "./src/index.tsx",
+    entry: `./src/index${entryFileExtension}`,
     output: {
       path: path.resolve(__dirname, "./dist"),
       filename: `[name].[hash].js?v=${new Date().valueOf()}`,

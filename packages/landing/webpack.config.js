@@ -12,6 +12,7 @@ module.exports = () => {
           "ui-components": `uiComponents@http://localhost:3010/${getMfeFileName(
             "uiComponents"
           )}`,
+          utility: `utility@http://localhost:3011/${getMfeFileName("utility")}`,
         },
         exposes: {
           "./App": "./src/App.tsx",

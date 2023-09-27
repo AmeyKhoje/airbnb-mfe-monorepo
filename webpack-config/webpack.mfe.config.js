@@ -3,8 +3,20 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 // const packageJson = require("./package.json");
 const { getMfeFileName } = require("./helper");
 
-module.exports = ({ mfeConfig, port, open = false }) => {
-  const baseConfig = configBase(port, "development", open);
+module.exports = ({
+  mfeConfig,
+  port,
+  open = false,
+  skipHtml = false,
+  entryFileExtension = ".tsx",
+}) => {
+  const baseConfig = configBase(
+    port,
+    "development",
+    open,
+    skipHtml,
+    entryFileExtension
+  );
   return {
     ...baseConfig,
     plugins: [
