@@ -9,13 +9,15 @@ module.exports = ({
   open = false,
   skipHtml = false,
   entryFileExtension = ".tsx",
+  aliases = {},
 }) => {
   const baseConfig = configBase(
     port,
     "development",
     open,
     skipHtml,
-    entryFileExtension
+    entryFileExtension,
+    aliases
   );
   return {
     ...baseConfig,

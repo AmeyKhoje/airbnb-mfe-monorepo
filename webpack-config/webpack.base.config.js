@@ -8,7 +8,8 @@ module.exports = (
   mode = "development",
   open,
   skipHtmlPlugin = false,
-  entryFileExtension = ".tsx"
+  entryFileExtension = ".tsx",
+  aliases = {}
 ) => {
   return {
     mode,
@@ -58,20 +59,32 @@ module.exports = (
         },
         {
           test: /\.css$/i,
-          use: ["style-loader", "css-loader", "sass-loader"],
+          use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"],
         },
+
         {
           test: /\.(png|svg|jp?g|gif)$/,
           use: {
             loader: "file-loader",
           },
         },
+        {
+          test: /\.(woff|woff2|eot|ttf)$/,
+          use: {
+            loader: "url-loader",
+          },
+        },
+        {
+          test: /\.svg$/,
+          use: ["@svgr/webpack"],
+        },
       ],
     },
     resolve: {
       extensions: [".jsx", ".js", ".tsx", ".ts"],
       alias: {
-        src: path.resolve(__dirname, "src"),
+        root: path.resolve(__dirname, "./src"),
+        ...aliases,
       },
     },
     plugins: [

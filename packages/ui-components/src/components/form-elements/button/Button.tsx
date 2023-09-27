@@ -1,5 +1,7 @@
+import TailwindProvider from "src/hoc/TailwindProvider";
+
 const Button = () => {
-  return <button>MFE Button</button>;
+  return <button className="">MFE Button</button>;
 };
 
-export default Button;
+export default TailwindProvider(Button);

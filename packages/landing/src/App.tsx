@@ -1,4 +1,4 @@
-import { Button } from "ui-components/components";
+import { TopBar } from "ui-components/components";
 import { getTodaysDate } from "utility/helpers";
 
 const App = () => {
@@ -6,7 +6,7 @@ const App = () => {
 
   return (
     <div>
-      <Button /> Landing App
+      <TopBar />
     </div>
   );
 };
