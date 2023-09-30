@@ -12,6 +12,7 @@ module.exports = {
       airbnbGrey: "#767676",
       white: "#FFFFFF",
       black: "#000000",
+      grey1: "#F7F7F7",
     },
     fontFamily: {
       poppins: `'Poppins', sans-serif`,
