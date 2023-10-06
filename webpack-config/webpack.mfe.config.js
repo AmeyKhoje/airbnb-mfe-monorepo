@@ -29,6 +29,14 @@ module.exports = ({
         remotes: mfeConfig.remotes || {},
         exposes: mfeConfig.exposes || {},
         shared: {
+          react: {
+            requiredVersion: "^18.2.0",
+            eager: true,
+          },
+          "react-dom": {
+            requiredVersion: "^18.2.0",
+            eager: true,
+          },
           ...mfeConfig.shared,
         },
       }),

@@ -1,5 +1,6 @@
 const path = require("path");
 const webpackMfeConfig = require("../../webpack-config/webpack.mfe.config");
+const { getMfeFileName } = require("../../webpack-config/helper");
 
 module.exports = () => {
   return {
@@ -11,6 +12,9 @@ module.exports = () => {
         appName: "uiComponents",
         exposes: {
           "./components": "./src/components",
+        },
+        remotes: {
+          utility: `utility@http://localhost:3011/${getMfeFileName("utility")}`,
         },
       },
       aliases: {

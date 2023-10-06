@@ -1,4 +1,5 @@
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
+import Popper from "src/components/bare/popper";
 import Button from "src/components/form-elements/button";
 import LogoSvg from "src/components/minis/LogoSvg";
 import TailwindProvider from "src/hoc/TailwindProvider";
@@ -21,6 +22,13 @@ const TopBar = () => {
                 onlyIcon
                 icon={<GlobeAltIcon width={"2.6rem"} height={"2.6rem"} />}
                 rounded={"full"}
+              />
+            </div>
+            <div>
+              <Popper
+                behavior="dropdown"
+                trigger={<Button />}
+                content={"Hey Amey"}
               />
             </div>
           </div>

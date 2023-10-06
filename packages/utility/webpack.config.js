@@ -12,6 +12,7 @@ module.exports = () => {
         exposes: {
           "./helpers": "./src/helpers",
           "./hoc": "./src/hoc",
+          "./hooks": "./src/hooks",
         },
       },
     }),

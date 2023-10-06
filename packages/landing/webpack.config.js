@@ -1,5 +1,6 @@
 const { getMfeFileName } = require("../../webpack-config/helper");
 const webpackMfeConfig = require("../../webpack-config/webpack.mfe.config");
+const pkgJson = require("./package.json");
 
 module.exports = () => {
   return {
@@ -17,6 +18,7 @@ module.exports = () => {
         exposes: {
           "./App": "./src/App.tsx",
         },
+        shared: {},
       },
     }),
   };
