@@ -13,6 +13,7 @@ export default ({ behavior = "dropdown", trigger, content }: SelfProps) => {
   const [position, setPosition] = useState<string[] | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
+  const popperRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(containerRef, () => {
     setShow(false);
@@ -57,12 +58,14 @@ export default ({ behavior = "dropdown", trigger, content }: SelfProps) => {
   }, [containerRef]);
 
   useEffect(() => {
-    if (position?.length && triggerRef.current) {
-      console.log(
-        popperPositionClass(position, triggerRef.current.clientHeight)
-      );
+    if (position?.length && popperRef?.current && triggerRef?.current) {
+      const popperPosition = position[1] === "bottom" ? "top" : "bottom";
+      popperRef.current.style[popperPosition] = popperPositionClass(
+        position || [],
+        triggerRef?.current?.clientHeight || 0
+      )[1];
     }
-  }, [position, triggerRef]);
+  }, [position, popperRef, triggerRef, show]);
 
   return (
     <div className="w-auto max-w-full relative" ref={containerRef}>
@@ -75,10 +78,13 @@ export default ({ behavior = "dropdown", trigger, content }: SelfProps) => {
             popperBehaviorClass(triggerRef?.current?.clientHeight || 0)[
               behavior
             ]
-          } ${popperPositionClass(
-            position || [],
-            triggerRef?.current?.clientHeight || 0
-          )} top-[3.5rem]`}
+          } ${
+            popperPositionClass(
+              position || [],
+              triggerRef?.current?.clientHeight || 0
+            )[0]
+          }`}
+          ref={popperRef}
         >
           {content}
         </div>
