@@ -7,6 +7,7 @@ import Popper from "src/components/bare/popper";
 import Button from "src/components/form-elements/button";
 import LogoSvg from "src/components/minis/LogoSvg";
 import Dropdown from "src/components/ui-elements/dropdown";
+import IntelligentSearch from "src/components/ui-elements/intelligent-search";
 import TailwindProvider from "src/hoc/TailwindProvider";
 
 const TopBar = () => {
@@ -16,7 +17,9 @@ const TopBar = () => {
         <div className="w-[25%]">
           <LogoSvg primary width={15} />
         </div>
-        <div className="w-[50%]"></div>
+        <div className="w-[50%]">
+          <IntelligentSearch />
+        </div>
         <div className="w-[25%]">
           <div className="flex items-center">
             <div className="mr-[1rem]">
