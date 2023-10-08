@@ -30,7 +30,7 @@ const popperPositionClass = (
       bottom: `top-[${topBasedOnHeight}rem]`,
     };
 
-    return [`${horizontalClasses[hPos]}`, `${topBasedOnHeight}rem`];
+    return [`${horizontalClasses[hPos]}`, `${topBasedOnHeight + 0.5}rem`];
   } else return "";
 };
 

@@ -69,7 +69,11 @@ export default ({ behavior = "dropdown", trigger, content }: SelfProps) => {
 
   return (
     <div className="w-auto max-w-full relative" ref={containerRef}>
-      <div className="w-auto max-w-full" ref={triggerRef} onClick={handleOpen}>
+      <div
+        className="w-auto max-w-full cursor-pointer"
+        ref={triggerRef}
+        onClick={handleOpen}
+      >
         {trigger}
       </div>
       {show && (

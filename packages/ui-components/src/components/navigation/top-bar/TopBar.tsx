@@ -1,7 +1,12 @@
-import { GlobeAltIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  GlobeAltIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/outline";
 import Popper from "src/components/bare/popper";
 import Button from "src/components/form-elements/button";
 import LogoSvg from "src/components/minis/LogoSvg";
+import Dropdown from "src/components/ui-elements/dropdown";
 import TailwindProvider from "src/hoc/TailwindProvider";
 
 const TopBar = () => {
@@ -14,10 +19,10 @@ const TopBar = () => {
         <div className="w-[50%]"></div>
         <div className="w-[25%]">
           <div className="flex items-center">
-            <div className="mr-1">
+            <div className="mr-[1rem]">
               <Button title={"Airbnb your home"} rounded={"corners_rounded"} />
             </div>
-            <div className="mr-1">
+            <div className="mr-[1rem]">
               <Button
                 onlyIcon
                 icon={<GlobeAltIcon width={"2.6rem"} height={"2.6rem"} />}
@@ -25,11 +30,28 @@ const TopBar = () => {
               />
             </div>
             <div>
-              <Popper
+              <Dropdown
+                trigger={
+                  <div className="rounded-[50rem] border-[0.1rem] flex items-center p-[0.5rem] hover:shadow-[0_0.5rem_0.6rem_0_rgba(0,0,0,0.2)]">
+                    <Bars3Icon width={"3rem"} height={"3rem"} />
+                    <UserCircleIcon
+                      className="ml-[1rem]"
+                      width={"3rem"}
+                      height={"3rem"}
+                      fill="#e5e5e5"
+                    />
+                  </div>
+                }
+                lists={[
+                  [{ title: "Sign up" }, { title: "Log in" }],
+                  [{ title: "Airbnb your home" }, { title: "Help Center" }],
+                ]}
+              />
+              {/* <Popper
                 behavior="dropdown"
                 trigger={<Button />}
                 content={"Hey Amey"}
-              />
+              /> */}
             </div>
           </div>
         </div>
