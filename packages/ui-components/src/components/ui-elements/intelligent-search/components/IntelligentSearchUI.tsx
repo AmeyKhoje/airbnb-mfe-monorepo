@@ -1,10 +1,16 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { useContext } from "react";
+import IntelligentSearchContext from "src/context/IntelligentSearchContext";
 
 const IntelligentSearchUI = () => {
+  const { handleTransform } = useContext(IntelligentSearchContext);
   return (
     <div className="w-[47rem] flex items-center rounded-[20rem] shadow-[0_0.3rem_0.8rem_0_rgba(0,0,0,0.1)] border-[0.1rem] border-[rgba(0,0,0,0.1)] px-[1.7rem] py-[1.3rem]">
       <div className="flex items-stretch h-full w-[calc(100%-5rem)]">
-        <div className="w-1/3 border-r-[rgba(0,0,0,0.2)] border-r-[0.1rem] flex items-center justify-center">
+        <div
+          onClick={() => handleTransform("destination")}
+          className="w-1/3 border-r-[rgba(0,0,0,0.2)] border-r-[0.1rem] flex items-center justify-center"
+        >
           <p className="text-[2rem] font-[500] text-center font-poppins">
             Anywhere
           </p>
