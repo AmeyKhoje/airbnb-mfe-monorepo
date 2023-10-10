@@ -45,6 +45,10 @@ module.exports = {
       white: "#FFFFFF",
       black: "#000000",
       grey1: "#F7F7F7",
+      grey2: "#EBEBEB",
+      grey3: "#CFCFCF",
+      transparent: "rgba(0,0,0,0)",
+      airbnbPink: "#FF385C",
     },
     fontFamily: {
       poppins: `'Poppins', sans-serif`,

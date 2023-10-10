@@ -1,8 +1,12 @@
 import IntelligentSearchContext from "src/context/IntelligentSearchContext";
 import IntelligentSearchWrapper from "./IntelligetSearchWrapper";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const IntelligentSearch = () => {
+type SelfProps = {
+  handleChange: (isOpen: boolean) => void;
+};
+
+const IntelligentSearch = ({ handleChange }: SelfProps) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchElement, setSearchElement] = useState<
     "none" | "destination" | "check-in-out" | "guests"
@@ -19,6 +23,10 @@ const IntelligentSearch = () => {
     setSearchElement("none");
     setIsSearchOpen(false);
   };
+
+  useEffect(() => {
+    handleChange(isSearchOpen);
+  }, [isSearchOpen]);
 
   return (
     <IntelligentSearchContext.Provider

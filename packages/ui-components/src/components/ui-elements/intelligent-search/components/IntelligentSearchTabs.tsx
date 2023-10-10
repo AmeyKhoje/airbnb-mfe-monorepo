@@ -14,7 +14,7 @@ const IntelligentSearchTabs = ({ handleChange }: SelfProps) => {
     handleChange(activeIndex);
   }, [activeIndex]);
   return (
-    <div className="w-max flex items-center justify-between">
+    <div className="w-max flex items-center justify-between mx-auto">
       <div
         onClick={() => handleTabClick(0)}
         className={`cursor-pointer py-[2rem] mr-[4rem] h-[6rem] w-max hover:border-b-[0.4rem] hover:border-b-[rgba(0,0,0,0.7)] hover:text-airbnbGrey text-black ${

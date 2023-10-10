@@ -3,6 +3,7 @@ import {
   GlobeAltIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
+import { useState } from "react";
 import Popper from "src/components/bare/popper";
 import Button from "src/components/form-elements/button";
 import LogoSvg from "src/components/minis/LogoSvg";
@@ -11,14 +12,18 @@ import IntelligentSearch from "src/components/ui-elements/intelligent-search";
 import TailwindProvider from "src/hoc/TailwindProvider";
 
 const TopBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleChange = (isOpen: boolean) => {
+    setIsOpen(!!isOpen);
+  };
   return (
-    <div className="fixed top-0 left-0 w-full h-32 bg-white pl-20 pr-2pl-20 pt-12 pb-1pt-12">
+    <div className="fixed top-0 left-0 w-full h-[12rem] bg-white pl-20 pr-2pl-20 pt-12 pb-1pt-12">
       <div className="flex items-center w-full">
         <div className="w-[25%]">
           <LogoSvg primary width={15} />
         </div>
-        <div className="w-[50%] flex justify-center items-center">
-          <IntelligentSearch />
+        <div className={`w-[50%] flex justify-center items-center`}>
+          <IntelligentSearch handleChange={handleChange} />
         </div>
         <div className="w-[25%]">
           <div className="flex items-center">

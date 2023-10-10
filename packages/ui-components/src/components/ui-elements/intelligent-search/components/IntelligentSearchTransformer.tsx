@@ -2,6 +2,7 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import IntelligentSearchUI from "./IntelligentSearchUI";
 import IntelligentSearchContext from "src/context/IntelligentSearchContext";
 import IntelligentSearchTabs from "./IntelligentSearchTabs";
+import IntelligentSearchFilter from "./IntelligentSearchFIlter";
 
 const IntelligentSearchTransformer = () => {
   const [initialRenderDone, updateInitialRender] = useState(false);
@@ -47,6 +48,11 @@ const IntelligentSearchTransformer = () => {
               console.log(val);
             }}
           />
+        </div>
+      )}
+      {!!isSearchOpen && (
+        <div className="fixed top-[12rem] w-full h-[10rem] bg-white left-0 flex justify-center">
+          <IntelligentSearchFilter />
         </div>
       )}
     </div>
