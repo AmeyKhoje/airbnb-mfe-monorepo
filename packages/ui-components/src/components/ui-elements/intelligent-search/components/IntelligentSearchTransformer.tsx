@@ -1,6 +1,7 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import IntelligentSearchUI from "./IntelligentSearchUI";
 import IntelligentSearchContext from "src/context/IntelligentSearchContext";
+import IntelligentSearchTabs from "./IntelligentSearchTabs";
 
 const IntelligentSearchTransformer = () => {
   const [initialRenderDone, updateInitialRender] = useState(false);
@@ -32,8 +33,6 @@ const IntelligentSearchTransformer = () => {
     updateInitialRender(true);
   }, []);
 
-  console.log(isSearchOpen);
-
   return (
     <div>
       {!isSearchOpen && (
@@ -41,7 +40,15 @@ const IntelligentSearchTransformer = () => {
           <IntelligentSearchUI />
         </div>
       )}
-      {!!isSearchOpen && <div>Hello</div>}
+      {!!isSearchOpen && (
+        <div>
+          <IntelligentSearchTabs
+            handleChange={(val) => {
+              console.log(val);
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };
