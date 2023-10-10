@@ -17,7 +17,7 @@ const TopBar = () => {
         <div className="w-[25%]">
           <LogoSvg primary width={15} />
         </div>
-        <div className="w-[50%]">
+        <div className="w-[50%] flex justify-center items-center">
           <IntelligentSearch />
         </div>
         <div className="w-[25%]">
