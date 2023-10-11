@@ -1,10 +1,27 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useOutsideClick } from "utility/hooks";
 import IntelligentSearchContext from "src/context/IntelligentSearchContext";
 
 const IntelligentSearchFilter = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | number[]>(0);
-  const { searchElement } = useContext(IntelligentSearchContext);
+
+  const filterRef = useRef<HTMLDivElement | null>(null);
+
+  const { searchElement, handleTransform } = useContext(
+    IntelligentSearchContext
+  );
+
+  useOutsideClick(filterRef, () => {
+    console.log("here");
+
+    !!isMounted && handleTransform("none");
+  });
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     if (searchElement) {
@@ -31,7 +48,10 @@ const IntelligentSearchFilter = () => {
     "rounded-[100rem] bg-white hover:bg-white shadow-[0_0.1rem_2rem_0_rgba(0,0,0,0.2)]";
   return (
     <div className="mt-[2rem]">
-      <div className="flex items-stretch w-[130rem] bg-grey2 rounded-[100rem] ">
+      <div
+        ref={filterRef}
+        className="flex items-stretch w-[130rem] bg-grey2 rounded-[100rem] "
+      >
         <div
           onClick={() => handleFilterSelect(0)}
           className={`w-1/3 cursor-pointer py-[1rem] px-[4.5rem] flex justify-center flex-col hover:bg-grey3 rounded-[100rem] ${
