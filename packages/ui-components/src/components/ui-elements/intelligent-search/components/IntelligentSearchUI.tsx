@@ -15,19 +15,28 @@ const IntelligentSearchUI = () => {
             Anywhere
           </p>
         </div>
-        <div className="w-1/3 border-r-[rgba(0,0,0,0.2)] border-r-[0.1rem] flex items-center justify-center">
+        <div
+          onClick={() => handleTransform("check-in-out")}
+          className="w-1/3 border-r-[rgba(0,0,0,0.2)] border-r-[0.1rem] flex items-center justify-center"
+        >
           <p className="text-[2rem] font-[500] text-center font-poppins">
             Any week
           </p>
         </div>
-        <div className="w-1/3 flex items-center justify-center">
+        <div
+          onClick={() => handleTransform("guests")}
+          className="w-1/3 flex items-center justify-center"
+        >
           <p className="text-[2rem] font-[400] text-center font-poppins">
             Add guests
           </p>
         </div>
       </div>
       <div className="w-[5rem] flex justify-end items-center">
-        <div className="bg-airbnbRed w-[4rem] h-[4rem] flex items-center justify-center rounded-[10rem]">
+        <div
+          onClick={() => handleTransform("none")}
+          className="bg-airbnbRed w-[4rem] h-[4rem] flex items-center justify-center rounded-[10rem]"
+        >
           <MagnifyingGlassIcon
             fill="transparent"
             stroke="#ffffff"

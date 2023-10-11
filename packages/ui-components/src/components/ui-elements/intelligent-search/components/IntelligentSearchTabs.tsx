@@ -13,6 +13,7 @@ const IntelligentSearchTabs = ({ handleChange }: SelfProps) => {
   useEffect(() => {
     handleChange(activeIndex);
   }, [activeIndex]);
+
   return (
     <div className="w-max flex items-center justify-between mx-auto">
       <div
