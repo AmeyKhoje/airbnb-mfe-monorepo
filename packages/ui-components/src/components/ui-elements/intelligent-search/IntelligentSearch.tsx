@@ -1,12 +1,14 @@
 import IntelligentSearchContext from "src/context/IntelligentSearchContext";
 import IntelligentSearchWrapper from "./IntelligetSearchWrapper";
-import { useEffect, useState } from "react";
+import { Ref, useEffect, useState } from "react";
+import { useOutsideClick } from "utility/hooks";
 
 type SelfProps = {
   handleChange: (isOpen: boolean) => void;
+  topBarRef: Ref<HTMLDivElement>;
 };
 
-const IntelligentSearch = ({ handleChange }: SelfProps) => {
+const IntelligentSearch = ({ handleChange, topBarRef }: SelfProps) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchElement, setSearchElement] = useState<
     "none" | "destination" | "check-in-out" | "guests"

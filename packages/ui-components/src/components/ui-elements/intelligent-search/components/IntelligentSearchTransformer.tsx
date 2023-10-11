@@ -51,7 +51,7 @@ const IntelligentSearchTransformer = () => {
         </div>
       )}
       {!!isSearchOpen && (
-        <div className="fixed top-[12rem] w-full h-[10rem] bg-white left-0 flex justify-center">
+        <div className="fixed top-[12rem] w-full h-[14rem] bg-white left-0 flex justify-center">
           <IntelligentSearchFilter />
         </div>
       )}

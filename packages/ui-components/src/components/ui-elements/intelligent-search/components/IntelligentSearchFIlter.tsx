@@ -1,10 +1,11 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const IntelligentSearchFilter = () => {
-  const activeClass = "rounded-[100rem] bg-white hover:bg-white";
+  const activeClass =
+    "rounded-[100rem] bg-white hover:bg-white shadow-[0_0.1rem_2rem_0_rgba(0,0,0,0.2)]";
   return (
     <div className="mt-[2rem]">
-      <div className="flex items-stretch w-[130rem] bg-grey2 rounded-[100rem] shadow-[0_0.1rem_2rem_0_rgba(0,0,0,0.2)]">
+      <div className="flex items-stretch w-[130rem] bg-grey2 rounded-[100rem] ">
         <div
           className={`w-1/3 py-[1rem] px-[4.5rem] flex justify-center flex-col hover:bg-grey3 ${activeClass}`}
         >
