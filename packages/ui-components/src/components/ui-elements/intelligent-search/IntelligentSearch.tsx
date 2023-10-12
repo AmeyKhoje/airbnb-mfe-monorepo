@@ -13,6 +13,7 @@ const IntelligentSearch = ({ handleChange, topBarRef }: SelfProps) => {
   const [searchElement, setSearchElement] = useState<
     "none" | "destination" | "check-in-out" | "guests"
   >("none");
+  const [travelTypeIndex, setTravelTypeIndex] = useState(0);
 
   const handleTransform = (
     element: "none" | "destination" | "check-in-out" | "guests"
@@ -22,9 +23,14 @@ const IntelligentSearch = ({ handleChange, topBarRef }: SelfProps) => {
   };
 
   const cancelTransform = () => {
-    setSearchElement("none");
-    setIsSearchOpen(false);
+    if (!!isSearchOpen) {
+      setSearchElement("none");
+      setIsSearchOpen(false);
+    }
   };
+
+  const handleTravelTypeIndexChange = (index: number) =>
+    setTravelTypeIndex(index);
 
   useEffect(() => {
     handleChange(isSearchOpen);
@@ -35,8 +41,10 @@ const IntelligentSearch = ({ handleChange, topBarRef }: SelfProps) => {
       value={{
         isSearchOpen,
         searchElement,
+        travelTypeIndex,
         handleTransform,
         cancelTransform,
+        handleTravelTypeIndexChange,
       }}
     >
       <IntelligentSearchWrapper />

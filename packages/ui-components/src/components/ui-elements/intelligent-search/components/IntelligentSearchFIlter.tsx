@@ -9,15 +9,13 @@ const IntelligentSearchFilter = () => {
 
   const filterRef = useRef<HTMLDivElement | null>(null);
 
-  const { searchElement, handleTransform } = useContext(
+  const { searchElement, cancelTransform, isSearchOpen } = useContext(
     IntelligentSearchContext
   );
 
-  useOutsideClick(filterRef, () => {
-    console.log("here");
-
-    !!isMounted && handleTransform("none");
-  });
+  // useOutsideClick(filterRef, () => {
+  //   cancelTransform();
+  // });
 
   useEffect(() => {
     setIsMounted(true);
@@ -42,10 +40,9 @@ const IntelligentSearchFilter = () => {
   const handleFilterSelect = (index: number | number[]) =>
     setActiveIndex(index);
 
-  console.log(isExpandSearch, activeIndex);
-
   const activeClass =
     "rounded-[100rem] bg-white hover:bg-white shadow-[0_0.1rem_2rem_0_rgba(0,0,0,0.2)]";
+
   return (
     <div className="mt-[2rem]">
       <div
