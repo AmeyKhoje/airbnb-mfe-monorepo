@@ -2,6 +2,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useOutsideClick } from "utility/hooks";
 import IntelligentSearchContext from "src/context/IntelligentSearchContext";
+import IntelligentSearchModal from "./IntelligentSearchModal";
 
 const IntelligentSearchFilter = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -44,7 +45,7 @@ const IntelligentSearchFilter = () => {
     "rounded-[100rem] bg-white hover:bg-white shadow-[0_0.1rem_2rem_0_rgba(0,0,0,0.2)]";
 
   return (
-    <div className="mt-[2rem]">
+    <div className="mt-[2rem] relative">
       <div
         ref={filterRef}
         className="flex items-stretch w-[130rem] bg-grey2 rounded-[100rem] "
@@ -127,6 +128,7 @@ const IntelligentSearchFilter = () => {
           </div>
         </div>
       </div>
+      <IntelligentSearchModal position="left" size="half" />
     </div>
   );
 };

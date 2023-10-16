@@ -2,6 +2,7 @@
   "author": "",
   "dependencies": {
     "@heroicons/react": "^2.0.18",
+    "perfect-scrollbar": "^1.5.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.68.0",
