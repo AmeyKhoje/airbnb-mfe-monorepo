@@ -14,10 +14,6 @@ const IntelligentSearchFilter = () => {
     IntelligentSearchContext
   );
 
-  // useOutsideClick(filterRef, () => {
-  //   cancelTransform();
-  // });
-
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -128,7 +124,13 @@ const IntelligentSearchFilter = () => {
           </div>
         </div>
       </div>
-      <IntelligentSearchModal position="left" size="half" />
+      <IntelligentSearchModal
+        position={
+          activeIndex === 0 ? "left" : activeIndex === 2 ? "right" : "center"
+        }
+        size={activeIndex === 0 || activeIndex === 2 ? "half" : "full"}
+        activeIndex={activeIndex}
+      />
     </div>
   );
 };
