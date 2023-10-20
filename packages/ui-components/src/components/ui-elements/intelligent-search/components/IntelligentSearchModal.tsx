@@ -1,6 +1,4 @@
-import { useEffect } from "react";
 import Region from "./modal-content/Region";
-import PerfectScrollbar from "perfect-scrollbar";
 import DateRange from "./modal-content/DateRange";
 
 type SelfProps = {
