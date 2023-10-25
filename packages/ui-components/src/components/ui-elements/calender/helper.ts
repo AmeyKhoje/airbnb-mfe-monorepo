@@ -1,5 +1,4 @@
 import moment from "moment-mini";
-import { List } from "immutable";
 
 const isExtraDays = (week: number, date: number) => {
   return !!(
@@ -9,7 +8,7 @@ const isExtraDays = (week: number, date: number) => {
   );
 };
 
-const getCalender = (year: number, month: number) => {
+const getMonthCalender = (year: number, month: number) => {
   let calender = [];
 
   const startDate = moment([year, month])
@@ -20,14 +19,8 @@ const getCalender = (year: number, month: number) => {
   const endDate = moment([year, month]).clone().endOf("month");
 
   const day = startDate.clone().subtract(1, "day");
-  let list = List([]);
 
   while (day.isBefore(endDate, "day")) {
-    list.concat(
-      Array(7)
-        .fill(0)
-        .map(() => day.add(1, "day").clone().format("DD"))
-    );
     calender.push(
       Array(7)
         .fill(0)
@@ -35,9 +28,32 @@ const getCalender = (year: number, month: number) => {
     );
   }
 
-  console.log(list);
-
   return calender;
 };
 
-export { getCalender, isExtraDays };
+const returnCalender = (calender: Array<Array<string>>) => {
+  let weekWiseCalendar: any = [];
+
+  calender.forEach((week: Array<string>, weekIndex: number) => {
+    let weekArray: any = [];
+    week.forEach((item: String, index: number) => {
+      const date = Number(item);
+      const dateObject = {
+        date: item,
+        isDisabled: isExtraDays(weekIndex, date),
+      };
+      weekArray.push(dateObject);
+    });
+
+    const weekObj = {
+      week: weekIndex,
+      dates: weekArray,
+    };
+
+    weekWiseCalendar.push(weekObj);
+  });
+
+  return weekWiseCalendar;
+};
+
+export { getMonthCalender, isExtraDays, returnCalender };

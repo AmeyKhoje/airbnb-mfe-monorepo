@@ -1,13 +1,15 @@
 import moment from "moment-mini";
-import { getCalender } from "./helper";
+import { getMonthCalender, returnCalender } from "./helper";
 
 const Calender = () => {
   const months = moment.months();
   const year = new Date().getFullYear();
 
-  const calender = getCalender(year, 0);
+  const calender = getMonthCalender(year, 5);
 
-  console.log(calender);
+  const cal = returnCalender(calender);
+
+  console.log(cal, months);
 
   return <div></div>;
 };
